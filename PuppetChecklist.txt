@@ -1,0 +1,58 @@
+A checklist for myself as I get this Puppet stuff going.
+
+PuppetMaster Tasks:
+	set --confdir and --vardir in /etc/sysconfig/puppetmaster
+		or just use the .puppet home directories...
+	add dkwasny to puppet group
+
+Not really automatable:
+	setup /etc/sysconfig/network-scripts/ifcfg-eth0
+		add DHCP_HOSTNAME=$(hostname)
+		set onboot to yes
+	yum update (all servers including new)
+	add puppet repo
+	install puppet
+
+Main Node Tasks:
+	set video mode to 844
+	
+Automatable:
+	*add epel repo
+	*yum install
+		*vim-enhanced
+		*wget
+		*htop
+		*man
+		*ntp
+		*tmux
+		*git
+
+	// All user steps here apply to other users later
+	*create dkwasny user
+	*pull down sudo file to /etc/sudo.d/
+	*setup ssh key login
+
+	// dkwasny specific
+	*add vimrc file
+	*pull down tmux config
+
+	*pull down /etc/sysconfig/iptables
+	
+	pull down ntp file
+		one for centos-1 and one for rest
+	
+	add hadoop user/group
+	install hadoop
+	pull hadoop configs
+	
+	add zookeeper user/group
+	install zookeeper
+	pull zookeeper configs
+	
+	add hbase user/group
+	install hbase
+	pull hbase configs
+	
+	add solr user/group
+	install solr
+	pull solr configs
