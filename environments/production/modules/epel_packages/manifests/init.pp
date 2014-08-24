@@ -1,4 +1,4 @@
-class epel-packages {
+class epel_packages {
 	package { "epel-release-6-8.noarch":
 		ensure => present,
 		provider => rpm,

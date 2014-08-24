@@ -1,6 +1,6 @@
 node "puppet-test" {
-	include system-config
-	include base-packages
-	include epel-packages
-	include dkwasny-user
+	include iptables
+	include base_packages
+	include epel_packages
+	include dkwasny_user
 }

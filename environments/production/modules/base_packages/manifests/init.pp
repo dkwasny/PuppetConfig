@@ -1,4 +1,4 @@
-class base-packages {
+class base_packages {
 	package { "vim-enhanced":
 		ensure => present,
 		allow_virtual => false
