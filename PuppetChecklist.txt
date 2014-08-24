@@ -40,6 +40,8 @@ Automatable:
 	
 	*pull down ntp file
 		*one for centos-1 and one for rest
+		
+	setup ntp to run on startup
 	
 	Install java
 		OpenJDK via yum?
@@ -61,3 +63,5 @@ Automatable:
 	add solr user/group
 	install solr
 	pull solr configs
+
+	setup puppet agent to run on startup
