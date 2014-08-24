@@ -9,9 +9,7 @@ Not really automatable:
 	setup /etc/sysconfig/network-scripts/ifcfg-eth0
 		add DHCP_HOSTNAME=$(hostname)
 		set onboot to yes
-	yum update (all servers including new)
-	add puppet repo
-	install puppet
+	run agent setup script
 
 Main Node Tasks:
 	set video mode to 844
@@ -38,8 +36,8 @@ Automatable:
 
 	*pull down /etc/sysconfig/iptables
 	
-	pull down ntp file
-		one for centos-1 and one for rest
+	*pull down ntp file
+		*one for centos-1 and one for rest
 	
 	add hadoop user/group
 	install hadoop
