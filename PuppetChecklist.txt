@@ -26,9 +26,11 @@ Automatable:
 		*git
 
 	// All user steps here apply to other users later
-	*create dkwasny user
-	*pull down sudo file to /etc/sudo.d/
-	*setup ssh key login
+	// TODO: separate dkwasny user from what is in the repo (private key is there!!)
+	create "user" user
+		Think of better name plx!
+	pull down sudo file to /etc/sudo.d/
+	setup ssh key login
 
 	// dkwasny specific
 	*add vimrc file
