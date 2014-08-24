@@ -39,6 +39,11 @@ Automatable:
 	*pull down ntp file
 		*one for centos-1 and one for rest
 	
+	Install java
+		OpenJDK via yum?
+		OpenJDK via rpm?
+		OracleJDK via rpm?
+	
 	add hadoop user/group
 	install hadoop
 	pull hadoop configs
