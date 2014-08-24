@@ -11,11 +11,11 @@ class base_packages {
 		ensure => present,
 		allow_virtual => false
 	}
-	package { "ntp":
+	package { "git":
 		ensure => present,
 		allow_virtual => false
 	}
-	package { "git":
+	package { "nc":
 		ensure => present,
 		allow_virtual => false
 	}
