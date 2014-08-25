@@ -3,5 +3,5 @@ node "puppet-test" {
 	include base_packages
 	include ntp_client
 	include epel_packages
-	include dkwasny_user
+	include admin_user
 }
