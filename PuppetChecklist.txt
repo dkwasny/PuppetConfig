@@ -26,11 +26,9 @@ Automatable:
 		*git
 
 	// All user steps here apply to other users later
-	// TODO: separate dkwasny user from what is in the repo (private key is there!!)
-	create "user" user
-		Think of better name plx!
-	pull down sudo file to /etc/sudo.d/
-	setup ssh key login
+	*create admin user
+	*pull down sudo file to /etc/sudo.d/
+	*setup ssh key login
 
 	// dkwasny specific
 	*add vimrc file
@@ -43,10 +41,7 @@ Automatable:
 		
 	setup ntp to run on startup
 	
-	Install java
-		OpenJDK via yum?
-		OpenJDK via rpm?
-		OracleJDK via rpm?
+	*Install OpenJDK via yum
 	
 	add hadoop user/group
 	install hadoop
