@@ -5,5 +5,8 @@ class iptables {
 		group => "root",
 		mode => 600,
 		source => "puppet:///modules/iptables/etc/sysconfig/iptables"
+	} ~>
+	service { "iptables":
+		ensure => running
 	}
 }
