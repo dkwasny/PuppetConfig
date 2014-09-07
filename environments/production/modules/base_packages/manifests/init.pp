@@ -19,8 +19,4 @@ class base_packages {
 		ensure => present,
 		allow_virtual => false
 	}
-	package { "java-1.7.0-openjdk":
-		ensure => present,
-		allow_virtual => false
-	}
 }

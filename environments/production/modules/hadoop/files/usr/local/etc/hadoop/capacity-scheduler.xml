@@ -1,0 +1,11 @@
+<configuration>
+	<property>
+		<name>yarn.scheduler.capacity.root.queues</name>
+		<value>kwaz-queue</value>
+	</property>
+	<property>
+		<name>yarn.scheduler.capacity.root.kwaz-queue.capacity</name>
+		<value>100</value>
+	</property>
+</configuration>
+

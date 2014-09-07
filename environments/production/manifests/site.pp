@@ -4,4 +4,6 @@ node "puppet-test" {
 	include ntp_client
 	include epel_packages
 	include admin_user
+	include java
+	include hadoop
 }
