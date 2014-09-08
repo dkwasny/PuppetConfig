@@ -1,7 +1,7 @@
 PuppetConfig
 ============
 
-An expanded reimplementation of my VMGridTools project with Puppet instead of complete homerolled nastiness.
+An expanded reimplementation of [VMGridTools](https://github.com/dkwasny/VMGridTools) with Puppet instead of complete homerolled nastiness.
 This setup is intended for 32-bit CentOS 6 machines.
 I plan to move to CentOS 7 once a 32-bit version is released.
 My desire to use a 32-bit OS is purely fueled by saving memory so I can have more nodes up at one time.
