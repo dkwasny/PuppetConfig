@@ -25,8 +25,44 @@ class hadoop {
 	} ->
 	file { "/var/local/hadoop":
 		ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => 755,
+		owner => "hadoop",
+		group => "hadoop",
+		mode => 644
+	} ->
+	file { "/var/log/hadoop":
+		ensure => "directory",
+		owner => "hadoop",
+		group => "hadoop",
+		mode => 750
+	} ->
+
+	# Setup passwordless login for the hadoop user
+	# which should of been created via the rpm.
+	file { "/home/hadoop/.ssh":
+		ensure => directory,
+		owner => "hadoop",
+		group => "hadoop",
+		mode => 700,
+	} ->
+	file { "/home/hadoop/.ssh/authorized_keys":
+		ensure => file,
+		owner => "hadoop",
+		group => "hadoop",
+		mode => 600,
+		source => "puppet:///modules/hadoop/home/hadoop/.ssh/authorized_keys",
+	} ->
+	file { "/home/hadoop/.ssh/id_rsa":
+		ensure => file,
+		owner => "hadoop",
+		group => "hadoop",
+		mode => 600,
+		source => "puppet:///modules/hadoop/home/hadoop/.ssh/id_rsa",
+	} ->
+	file { "/home/hadoop/.ssh/id_rsa.pub":
+		ensure => file,
+		owner => "hadoop",
+		group => "hadoop",
+		mode => 644,
+		source => "puppet:///modules/hadoop/home/hadoop/.ssh/id_rsa.pub",
 	}
 }

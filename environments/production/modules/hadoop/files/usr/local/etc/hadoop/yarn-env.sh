@@ -78,6 +78,7 @@ fi
 # so that filenames w/ spaces are handled correctly in loops below
 IFS=
 
+YARN_LOG_DIR="$HADOOP_LOG_DIR"
 
 # default log directory & file
 if [ "$YARN_LOG_DIR" = "" ]; then

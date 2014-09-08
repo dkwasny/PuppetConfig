@@ -53,5 +53,26 @@ class admin_user {
 		group => "admin",
 		mode => 664,
 		source => "puppet:///modules/admin_user/home/admin/.tmux.conf",
+	} ->
+	file { "/home/admin/grid-start.sh":
+		ensure => file,
+		owner => "admin",
+		group => "admin",
+		mode => 700,
+		source => "puppet:///modules/admin_user/home/admin/grid-start.sh",
+	} ->
+	file { "/home/admin/grid-stop.sh":
+		ensure => file,
+		owner => "admin",
+		group => "admin",
+		mode => 700,
+		source => "puppet:///modules/admin_user/home/admin/grid-stop.sh",
+	} ->
+	file { "/home/admin/grid-format.sh":
+		ensure => file,
+		owner => "admin",
+		group => "admin",
+		mode => 700,
+		source => "puppet:///modules/admin_user/home/admin/grid-format.sh",
 	}
 }
