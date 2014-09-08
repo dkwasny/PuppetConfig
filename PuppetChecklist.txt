@@ -30,7 +30,7 @@ Automatable:
 	*pull down sudo file to /etc/sudo.d/
 	*setup ssh key login
 
-	// dkwasny specific
+	// admin specific
 	*add vimrc file
 	*pull down tmux config
 
@@ -43,20 +43,14 @@ Automatable:
 	
 	*Install OpenJDK via yum
 	
-	add hadoop user/group
-	install hadoop
-	pull hadoop configs
+	* add hadoop user/group
+	* install hadoop
+	* pull hadoop configs
 	
-	add zookeeper user/group
-	install zookeeper
-	pull zookeeper configs
+	zookeeper
 	
-	add hbase user/group
-	install hbase
-	pull hbase configs
+	hbase
 	
-	add solr user/group
-	install solr
-	pull solr configs
+	solr
 
 	setup puppet agent to run on startup
