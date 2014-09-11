@@ -6,9 +6,9 @@ PuppetMaster Tasks:
 	add dkwasny to puppet group
 
 Not really automatable:
-	setup /etc/sysconfig/network-scripts/ifcfg-eth0
+	setup /etc/sysconfig/network
 		add DHCP_HOSTNAME=$(hostname)
-		set onboot to yes
+	****install deltarpm
 	run agent setup script
 
 Main Node Tasks:
@@ -38,7 +38,9 @@ Automatable:
 	
 	*pull down ntp file
 		*one for centos-1 and one for rest
-		
+	
+	pull down the grub default file
+	
 	*setup ntp to run on startup
 	
 	*Install OpenJDK via yum
