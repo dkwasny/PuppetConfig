@@ -7,15 +7,11 @@ class base_packages {
 		ensure => present,
 		allow_virtual => false
 	}
-	package { "man":
-		ensure => present,
-		allow_virtual => false
-	}
 	package { "git":
 		ensure => present,
 		allow_virtual => false
 	}
-	package { "nc":
+	package { "nmap-ncat":
 		ensure => present,
 		allow_virtual => false
 	}
