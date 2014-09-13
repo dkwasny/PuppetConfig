@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo -u hadoop -E $(which hdfs) namenode -format;
+sudo -u hdfs -E $(which hdfs) namenode -format;

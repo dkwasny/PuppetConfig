@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo -u hadoop -E $(which start-dfs.sh);
-sudo -u hadoop -E $(which start-yarn.sh);
+sudo -u hdfs -E $(which start-dfs.sh);
+sudo -u yarn -E $(which start-yarn.sh);

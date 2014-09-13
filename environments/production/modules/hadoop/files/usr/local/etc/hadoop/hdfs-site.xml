@@ -17,11 +17,11 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-	<property>
-		<name>hadoop.tmp.dir</name>
-		<value>/var/local/hadoop</value>
-	</property>
 	<!-- Namenode -->
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value>/var/local/hdfs/name</value>
+	</property>
 	<property>
 		<name>dfs.namenode.rpc-address</name>
 		<value>puppet-test:8020</value>
@@ -36,6 +36,10 @@
 	</property>
 
 	<!-- Datanode -->
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value>/var/local/hdfs/data</value>
+	</property>
 	<property>
 		<name>dfs.datanode.handler.count</name>
 		<value>3</value>
