@@ -5,5 +5,6 @@ node "puppet-test" {
 	include epel_packages
 	include admin_user
 	include java
-	include hadoop
+	include hadoop::namenode
+	include hadoop::datanode
 }

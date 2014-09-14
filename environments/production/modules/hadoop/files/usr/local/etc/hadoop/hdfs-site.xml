@@ -17,6 +17,11 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
+	<property>
+		<name>dfs.permissions.enabled</name>
+		<value>false</value>
+	</property>
+
 	<!-- Namenode -->
 	<property>
 		<name>dfs.namenode.name.dir</name>
