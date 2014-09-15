@@ -33,13 +33,13 @@ How to Use
  * The filename is typically **\<FQDN\>.yaml**.
  * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
 1. Update [common.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hieradata/common.yaml) to match your puppet agents.
-1. Run **puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
+1. Run **sudo puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
  * You may need to adjust your firewall settings to allow the traffic through.
  * Like the settings within this repo, I just open all 192.168.1.0/24 traffic to the puppet master.
 1. Verify the cert requests made it to your puppet master by running **sudo puppet cert list --all** on your puppet master.
 1. Accept each cert request by running **sudo puppet cert sign \<SERVER_NAME\>**.
  * You can use **--all** instead of **\<SERVER_NAME\>** if you want.
-1. Again, run **puppet agent --no-daemonize --verbose --noop** and see the list of changes that will be applied.
+1. Again, run **sudo puppet agent --no-daemonize --verbose --noop** on your puppet agents and see the list of changes that will be applied.
 1. Once you are satisfied with the **--noop** output, run **puppet agent --no-daemonize --verbose** to start the real deal.
  * This takes about ~240 seconds for me.
 1. SSH over to **admin@\<NAMENODE\>** (password is *password*) and run **grid-format.sh** to setup your new namenode.
