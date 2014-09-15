@@ -27,7 +27,7 @@
 	</property>
 	<property>
 		<name>hbase.rootdir</name>
-		<value>hdfs://puppet-test:8020/hbase</value>
+		<value>hdfs://<%= @namenode %>:8020/hbase</value>
 	</property>
 	<property>
 		<name>hbase.cluster.distributed</name>
@@ -35,7 +35,7 @@
 	</property>
 	<property>
 		<name>hbase.zookeeper.quorum</name>
-		<value>puppet-test</value>
+		<value><%= @zookeeper_quorum %></value>
 	</property>
 	<property>
 		<name>hbase.local.dir</name>

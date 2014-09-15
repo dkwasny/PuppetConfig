@@ -1,0 +1,10 @@
+# puppet-test-dn.kwaz
+---
+classes:
+        - firewalld
+        - base_packages
+        - ntp_client
+        - epel_packages
+        - admin_user
+        - java
+        - hadoop::datanode

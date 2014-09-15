@@ -1,4 +1,4 @@
-class ntp_client {
+class ntp_client ($server_name) {
 	package { "ntp":
 		ensure => present,
 		allow_virtual => false
@@ -8,7 +8,7 @@ class ntp_client {
 		owner => "root",
 		group => "root",
 		mode => 644,
-		source => "puppet:///modules/ntp_client/etc/ntp.conf",
+		content => template("ntp_client/etc/ntp.conf.erb")
 	} ~>
 	service { "ntpd":
 		ensure => running,

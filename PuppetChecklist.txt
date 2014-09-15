@@ -1,26 +1,19 @@
 A checklist for myself as I get this Puppet stuff going.
 
 PuppetMaster Tasks:
-	set --confdir and --vardir in /etc/sysconfig/puppetmaster
-		or just use the .puppet home directories...
-	add dkwasny to puppet group
+	Create symlink from /etc/puppet to the checked out PuppetConfig repo
 
 Not really automatable:
 	setup /etc/sysconfig/network
 		add DHCP_HOSTNAME=$(hostname)
-	****install deltarpm
 	run agent setup script
 
-Main Node Tasks:
-	set video mode to 844
-	
 Automatable:
 	*add epel repo
 	*yum install
 		*vim-enhanced
 		*wget
 		*htop
-		*man
 		*ntp
 		*tmux
 		*git
@@ -34,12 +27,10 @@ Automatable:
 	*add vimrc file
 	*pull down tmux config
 
-	*pull down /etc/sysconfig/iptables
+	*pull down firewalld configs
 	
 	*pull down ntp file
 		*one for centos-1 and one for rest
-	
-	pull down the grub default file
 	
 	*setup ntp to run on startup
 	

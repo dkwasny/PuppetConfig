@@ -29,11 +29,11 @@
 	</property>
 	<property>
 		<name>dfs.namenode.rpc-address</name>
-		<value>puppet-test:8020</value>
+		<value><%= @namenode %>:8020</value>
 	</property>
 	<property>
 		<name>dfs.namenode.secondary.http-address</name>
-		<value>puppet-test:50090</value>
+		<value><%= @namenode %>:50090</value>
 	</property>
 	<property>
 		<name>dfs.namenode.handler.count</name>
