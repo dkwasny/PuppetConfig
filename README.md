@@ -21,7 +21,7 @@ How to Use
  * If you name the server something other than **puppet** then you will need to configre your puppet agents to look for that server.
 1. Install the **puppet-server** package from the appropriate [Puppet repo](https://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html) to your puppet master.
 1. Setup your puppet master and point it to a clone of this repo for configuration.
- * I just add a symlink from /etc/puppet to wherever I checked out the repo (in my home directory).
+ * I just add a symlink from **/etc/puppet** to wherever I checked out the repo (in my home directory).
 1. Start the **puppetmaster** daemon.
 1. Add any .rpm files to the repo where a .goeshere marker file already exists.
  * See below for more information.
