@@ -30,7 +30,7 @@ How to Use
  * This should perform a full yum update and install the **puppet** repo and package.
 1. Create YAML files for your puppet agents in [PuppetConfig/hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
  * There should be useful example files already in there.
- * The filename is typically \<FQDN\>.yaml.
+ * The filename is typically **\<FQDN\>.yaml**.
  * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
 1. Run **puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
  * You may need to adjust your firewall settings to allow the traffic through.
