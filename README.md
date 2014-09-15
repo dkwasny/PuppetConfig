@@ -71,5 +71,5 @@ These files are just too big to be reasonably stored in a GitHub repo, and can b
 Custom RPM Files
 -----------
 I will be creating my own RPMs unless I am able to find one of the latest version.
-You can find the **.spec** and systemd **.service ** files for these RPMs in [SpecFiles](https://github.com/dkwasny/SpecFiles).
+You can find the **.spec** and systemd **.service** files for these RPMs in [SpecFiles](https://github.com/dkwasny/SpecFiles).
 The binaries within the provided RPMs may be compiled from source if the released binaries do not fit my needs.
