@@ -32,6 +32,7 @@ How to Use
  * There should be useful example files already in there.
  * The filename is typically **\<FQDN\>.yaml**.
  * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
+1. Update [common.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hieradata/common.yaml) to match your puppet agents.
 1. Run **puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
  * You may need to adjust your firewall settings to allow the traffic through.
  * Like the settings within this repo, I just open all 192.168.1.0/24 traffic to the puppet master.
