@@ -30,18 +30,18 @@ How to Use
  * This should perform a full yum update and install the **puppet** repo and package.
 1. Create YAML files for your puppet agents in [PuppetConfig/hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
  * There should be useful example files already in there.
- * The filename is typically <FQDN>.yaml.
+ * The filename is typically \<FQDN\>.yaml.
  * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
 1. Run **puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
  * You may need to adjust your firewall settings to allow the traffic through.
  * Like the settings within this repo, I just open all 192.168.1.0/24 traffic to the puppet master.
 1. Verify the cert requests made it to your puppet master by running **sudo puppet cert list --all** on your puppet master.
-1. Accept each cert request by running **sudo puppet cert sign <SERVER_NAME>**.
- * You can use **--all** instead of **<SERVER_NAME>** if you want.
+1. Accept each cert request by running **sudo puppet cert sign \<SERVER_NAME\>**.
+ * You can use **--all** instead of **\<SERVER_NAME\>** if you want.
 1. Again, run **puppet agent --no-daemonize --verbose --noop** and see the list of changes that will be applied.
 1. Once you are satisfied with the **--noop** output, run **puppet agent --no-daemonize --verbose** to start the real deal.
  * This takes about ~240 seconds for me.
-1. SSH over to **admin@<NAMENODE>** (password is *password*) and run **grid-format.sh** to setup your new namenode.
+1. SSH over to **admin@\<NAMENODE\>** (password is *password*) and run **grid-format.sh** to setup your new namenode.
  * If you skip this step, all hell will break loose when you try to start your grid.
  * I can't really think of a good way to automate this because it will nuke all existing HDFS data.
 1. Either start up all of the appropriate daemons yourself, or just restart the machines.
@@ -50,9 +50,9 @@ How to Use
 
 Daemons
 -----------
-To operate on a daemon, execute **sudo systemctl <start|stop|status> <DAEMON_NAME>**.
+To operate on a daemon, execute **sudo systemctl \<start|stop|status\> \<DAEMON_NAME\>**.
 Because of how I use systemd to manage daemons, most all daemon logs will end up in systemd's journal instead of being separate files in /var/log.
-To read the logs for a particular daemon, execute **sudo journalctl -u <DAEMON_NAME>**.
+To read the logs for a particular daemon, execute **sudo journalctl -u \<DAEMON_NAME\>**.
 Here is a list of all installed daemons.
 * hdfs-namenode
 * hdfs-datanode
