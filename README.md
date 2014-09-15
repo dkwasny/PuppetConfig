@@ -40,7 +40,7 @@ How to Use
 1. Accept each cert request by running **sudo puppet cert sign \<SERVER_NAME\>**.
  * You can use **--all** instead of **\<SERVER_NAME\>** if you want.
 1. Again, run **sudo puppet agent --no-daemonize --verbose --noop** on your puppet agents and see the list of changes that will be applied.
-1. Once you are satisfied with the **--noop** output, run **puppet agent --no-daemonize --verbose** to start the real deal.
+1. Once you are satisfied with the **--noop** output, run **sudo puppet agent --no-daemonize --verbose** to start the real deal.
  * This takes about ~240 seconds for me.
 1. SSH over to **admin@\<NAMENODE\>** (password is *password*) and run **grid-format.sh** to setup your new namenode.
  * If you skip this step, all hell will break loose when you try to start your grid.
