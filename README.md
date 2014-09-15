@@ -26,7 +26,7 @@ How to Use
 1. Add any .rpm files to the repo where a .goeshere marker file already exists.
  * See below for more information.
 1. Setup however many servers you want that will become your puppet agents.
-1. Copy and run setup_agent.sh on your puppet agents.
+1. Copy and run **setup_agent.sh** on your puppet agents.
  * This should perform a full yum update and install the **puppet** repo and package.
 1. Create YAML files for your puppet agents in [PuppetConfig/hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
  * There should be useful example files already in there.
