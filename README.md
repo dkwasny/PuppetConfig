@@ -28,7 +28,7 @@ How to Use
 1. Setup however many servers you want that will become your puppet agents.
 1. Copy and run **setup_agent.sh** on your puppet agents.
  * This should perform a full yum update and install the **puppet** repo and package.
-1. Create YAML files for your puppet agents in [PuppetConfig/hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
+1. Create YAML files for your puppet agents in [hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
  * There should be useful example files already in there.
  * The filename is typically **\<FQDN\>.yaml**.
  * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
