@@ -2,30 +2,64 @@ PuppetConfig
 ============
 
 An expanded reimplementation of [VMGridTools](https://github.com/dkwasny/VMGridTools) with Puppet instead of complete homerolled nastiness.
-This setup is intended for 32-bit CentOS 6 machines.
-I plan to move to CentOS 7 once a 32-bit version is released.
-My desire to use a 32-bit OS is purely fueled by saving memory so I can have more nodes up at one time.
+This setup is intended for 64-bit CentOS 7 minimal machines, but should be usable with more fully featured Centos 7 releases.
+I would not be surprised if this works with Fedora as well.
 
-Currently, the site.pp manifest is only looking for a single server called puppet-test.
-Once I finish getting all of the appropriate daemons working, I will look into making this a bit more robust.
+Any non-RHEL distros will have some pain because of my usage of the EPEL repo.
+The setup_agent.sh script is also RHEL/Centos 7 specific.
+Both of these problems should be easily solvable if the need arises (unlikely on my own).
+Supporting SysVinit is not currently planned (puts up flame shield).
 
-The below tutorial assumes you already have knowledge on how to setup a puppet master.
-I will eventually add some bullets on how to setup a usable puppet master.
+The firewalld configuration opens ALL traffic from 192.168.1.0/24 while dropping ALL OTHER traffic.
+
+I don't have a good way to start or stop the entire grid via a command.
+I rely on the init system to start all the appropriate daemons for me and puppet to restart everything when things change.
 
 How to Use
 ------------
+1. Setup a server named **puppet** that will become your puppet master.
+ * If you name the server something other than **puppet** then you will need to configre your puppet agents to look for that server.
+1. Install the **puppet-server** package from the appropriate [Puppet repo](https://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html) to your puppet master.
 1. Setup your puppet master and point it to a clone of this repo for configuration.
+ * I just add a symlink from /etc/puppet to wherever I checked out the repo (in my home directory).
+1. Start the **puppetmaster** daemon.
 1. Add any .rpm files to the repo where a .goeshere marker file already exists.
  * See below for more information.
-1. Get your puppet agent (named puppet-test) connected to the internet.
-1. Run setup_agent.sh on your puppet agent.
- * This will execute a full yum update, install the Puppet repo and pull down the latest version of Puppet.
- * This means adding new nodes should follow a full yum update on your existing nodes (who needs stability on a toy grid?).
-1. Have your puppet agent sync up with the puppet master.
-1. Switch over to the newly created **admin** user (password is *password*).
-1. If this node is a brand new Hadoop namenode, then run **grid-format.sh** in the admin user's home directory.
-1. Run **grid-start.sh** to start up your new 1 node grid!
-1. Stop all grid daemons by running **grid-stop.sh**.
+1. Setup however many servers you want that will become your puppet agents.
+1. Copy and run setup_agent.sh on your puppet agents.
+ * This should perform a full yum update and install the **puppet** repo and package.
+1. Create YAML files for your puppet agents in [PuppetConfig/hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
+ * There should be useful example files already in there.
+ * The filename is typically <FQDN>.yaml.
+ * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
+1. Run **puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
+ * You may need to adjust your firewall settings to allow the traffic through.
+ * Like the settings within this repo, I just open all 192.168.1.0/24 traffic to the puppet master.
+1. Verify the cert requests made it to your puppet master by running **sudo puppet cert list --all** on your puppet master.
+1. Accept each cert request by running **sudo puppet cert sign <SERVER_NAME>**.
+ * You can use **--all** instead of **<SERVER_NAME>** if you want.
+1. Again, run **puppet agent --no-daemonize --verbose --noop** and see the list of changes that will be applied.
+1. Once you are satisfied with the **--noop** output, run **puppet agent --no-daemonize --verbose** to start the real deal.
+ * This takes about ~240 seconds for me.
+1. SSH over to **admin@<NAMENODE>** (password is *password*) and run **grid-format.sh** to setup your new namenode.
+ * If you skip this step, all hell will break loose when you try to start your grid.
+ * I can't really think of a good way to automate this because it will nuke all existing HDFS data.
+1. Either start up all of the appropriate daemons yourself, or just restart the machines.
+ * The daemons should be run on machine startup.
+ * See below for more information on the daemons.
+
+Daemons
+-----------
+To operate on a daemon, execute **sudo systemctl <start|stop|status> <DAEMON_NAME>**.
+Because of how I use systemd to manage daemons, most all daemon logs will end up in systemd's journal instead of being separate files in /var/log.
+To read the logs for a particular daemon, execute **sudo journalctl -u <DAEMON_NAME>**.
+Here is a list of all installed daemons.
+* hdfs-namenode
+* hdfs-datanode
+* yarn-resourcemanager
+* yarn-nodemanager
+* yarn-mrhistoryserver
+ * This is really for MapReduce, but I'm rolling it up with the other yarn daemons.
 
 .goeshere Files
 -----------
@@ -36,9 +70,5 @@ These files are just too big to be reasonably stored in a GitHub repo, and can b
 Custom RPM Files
 -----------
 I will be creating my own RPMs unless I am able to find one of the latest version.
-You can find the **.spec** files for these RPMs in [SpecFiles](https://github.com/dkwasny/SpecFiles).
+You can find the **.spec** and systemd **.service ** files for these RPMs in [SpecFiles](https://github.com/dkwasny/SpecFiles).
 The binaries within the provided RPMs may be compiled from source if the released binaries do not fit my needs.
-
-Misc Notes
------------
-Hadoop 2.5.0 is the first Hadoop release I know of to ship with 64-bit native libraries, so I had to compile a 32-bit version of source.
