@@ -61,6 +61,7 @@ Here is a list of all installed daemons.
 * yarn-nodemanager
 * yarn-mrhistoryserver
  * This is really for MapReduce, but I'm rolling it up with the other yarn daemons.
+* zookeeper
 
 .goeshere Files
 -----------
