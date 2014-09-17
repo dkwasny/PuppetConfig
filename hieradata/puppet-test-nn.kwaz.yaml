@@ -9,3 +9,6 @@ classes:
         - java
         - hadoop::namenode
         - hadoop::datanode
+        - zookeeper
+
+zookeeper::myid: 1

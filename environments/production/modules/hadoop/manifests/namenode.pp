@@ -8,6 +8,10 @@ class hadoop::namenode {
 		subscribe => Class["hadoop::base"],
 		require => Class["hadoop::base"]
 	} ->
+	service { "hdfs-secondarynamenode":
+		enable => true,
+		subscribe => Class["hadoop::base"],
+	} ->
 	service { "yarn-resourcemanager":
 		enable => true,
 		subscribe => Class["hadoop::base"]

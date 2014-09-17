@@ -5,3 +5,5 @@ hadoop::base::namenode: "puppet-test-nn"
 hadoop::base::datanodes:
         - "puppet-test-nn"
         - "puppet-test-dn"
+zookeeper::quorum:
+        - "puppet-test-nn"

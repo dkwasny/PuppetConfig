@@ -18,7 +18,7 @@ class hadoop::base ($namenode, $datanodes) {
 		require => Class["java"]
 	} ->
 	file { "/usr/local/etc/hadoop":
-		ensure => "directory",
+		ensure => directory,
 		owner => "root",
 		group => "root",
 		mode => 644,
@@ -26,28 +26,28 @@ class hadoop::base ($namenode, $datanodes) {
 		source => "puppet:///modules/hadoop/usr/local/etc/hadoop",
 	} ->
 	file { "/usr/local/etc/hadoop/core-site.xml":
-		ensure => "file",
+		ensure => file,
 		owner => "root",
 		group => "root",
 		mode => 644,
 		content => template("hadoop/usr/local/etc/hadoop/core-site.xml.erb")
 	} ->
 	file { "/usr/local/etc/hadoop/hdfs-site.xml":
-		ensure => "file",
+		ensure => file,
 		owner => "root",
 		group => "root",
 		mode => 644,
 		content => template("hadoop/usr/local/etc/hadoop/hdfs-site.xml.erb")
 	} ->
 	file { "/usr/local/etc/hadoop/slaves":
-		ensure => "file",
+		ensure => file,
 		owner => "root",
 		group => "root",
 		mode => 644,
 		content => template("hadoop/usr/local/etc/hadoop/slaves.erb")
 	} ->
 	file { "/usr/local/etc/hadoop/yarn-site.xml":
-		ensure => "file",
+		ensure => file,
 		owner => "root",
 		group => "root",
 		mode => 644,
@@ -59,13 +59,17 @@ class hadoop::base ($namenode, $datanodes) {
 		"/var/local/hdfs/data",
 		"/var/log/hdfs"
 		]:
-		ensure => "directory",
+		ensure => directory,
 		owner => "hdfs",
 		group => "hdfs",
 		mode => 700
 	} ->
-	file { "/var/log/yarn":
-		ensure => "directory",
+	file { [
+		"/var/log/yarn",
+		"/var/local/yarn",
+		"/var/local/yarn/nm-local-dir"
+		]:
+		ensure => directory,
 		owner => "yarn",
 		group => "yarn",
 		mode => 700

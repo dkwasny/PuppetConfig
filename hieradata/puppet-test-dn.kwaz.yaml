@@ -8,3 +8,6 @@ classes:
         - admin_user
         - java
         - hadoop::datanode
+        - zookeeper
+
+zookeeper::myid: 2
