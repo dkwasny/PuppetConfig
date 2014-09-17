@@ -56,6 +56,7 @@ Because of how I use systemd to manage daemons, most all daemon logs will end up
 To read the logs for a particular daemon, execute **sudo journalctl -u \<DAEMON_NAME\>**.
 Here is a list of all installed daemons.
 * hdfs-namenode
+* hdfs-secondarynamenode
 * hdfs-datanode
 * yarn-resourcemanager
 * yarn-nodemanager
