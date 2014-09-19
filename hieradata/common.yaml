@@ -1,9 +1,16 @@
 # default
 ---
-ntp_client::server_name: "puppet-test-nn"
-hadoop::base::namenode: "puppet-test-nn"
-hadoop::base::datanodes:
+
+namenode: &namenode "puppet-test-nn"
+datanodes: &datanodes
         - "puppet-test-nn"
-        - "puppet-test-dn"
-zookeeper::quorum:
+zookeper_quorum: &zookeeper_quorum
         - "puppet-test-nn"
+
+ntp_client::server_name: *namenode
+hadoop::base::namenode: *namenode
+hadoop::base::datanodes: *datanodes
+zookeeper::quorum: *zookeeper_quorum
+hbase::base::namenode: *namenode
+hbase::base::regionservers: *datanodes
+hbase::base::zookeeper_quorum: *zookeeper_quorum

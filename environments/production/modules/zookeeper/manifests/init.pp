@@ -43,6 +43,7 @@ class zookeeper ($quorum, $myid) {
 		content => template("zookeeper/usr/local/etc/zookeeper/zoo.cfg.erb")
 	} ~>
 	service { "zookeeper":
-		enable => true
+		enable => true,
+		subscribe => File["/var/local/zookeeper/myid"]
 	}
 }

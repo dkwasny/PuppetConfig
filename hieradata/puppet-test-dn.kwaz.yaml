@@ -9,5 +9,6 @@ classes:
         - java
         - hadoop::datanode
         - zookeeper
+        - hbase::regionserver
 
 zookeeper::myid: 2

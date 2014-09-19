@@ -10,5 +10,7 @@ classes:
         - hadoop::namenode
         - hadoop::datanode
         - zookeeper
+        - hbase::master
+        - hbase::regionserver
 
 zookeeper::myid: 1
