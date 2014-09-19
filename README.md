@@ -63,6 +63,8 @@ Here is a list of all installed daemons.
 * yarn-mrhistoryserver
  * This is really for MapReduce, but I'm rolling it up with the other yarn daemons.
 * zookeeper
+* hbase-master
+* hbase-regionserver
 
 .goeshere Files
 -----------
@@ -75,3 +77,4 @@ Custom RPM Files
 I will be creating my own RPMs unless I am able to find one of the latest version.
 You can find the **.spec** and systemd **.service** files for these RPMs in [SpecFiles](https://github.com/dkwasny/SpecFiles).
 The binaries within the provided RPMs may be compiled from source if the released binaries do not fit my needs.
+The custom RPMs SHOULD be usable on their own, but some minor configuration may be needed if you do not run them through systemd.
