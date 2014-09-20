@@ -1,0 +1,18 @@
+# vm-grid-1.kwaz
+---
+classes:
+        - firewalld
+        - journald
+        - base_packages
+        - ntp_server
+        - epel_packages
+        - admin_user
+        - java
+        - hadoop::namenode
+        - hadoop::datanode
+        - zookeeper
+        - hbase::master
+        - hbase::regionserver
+        - solr
+
+zookeeper::myid: 1

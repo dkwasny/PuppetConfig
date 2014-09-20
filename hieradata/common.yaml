@@ -1,11 +1,13 @@
 # default
 ---
 
-namenode: &namenode "puppet-test-nn"
+namenode: &namenode "vm-grid-1"
 datanodes: &datanodes
-        - "puppet-test-nn"
+        - "vm-grid-1"
+        - "vm-grid-2"
 zookeper_quorum: &zookeeper_quorum
-        - "puppet-test-nn"
+        - "vm-grid-1"
+        - "vm-grid-2"
 
 ntp_client::server_name: *namenode
 hadoop::base::namenode: *namenode

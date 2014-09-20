@@ -1,15 +1,14 @@
-# puppet-test-dn.kwaz
+# puppet-test.kwaz
 ---
 classes:
         - firewalld
         - base_packages
-        - ntp_client
+        - ntp_server
         - epel_packages
         - admin_user
         - java
+        - hadoop::namenode
         - hadoop::datanode
-        - zookeeper
+        - hbase::master
         - hbase::regionserver
         - solr
-
-zookeeper::myid: 2
