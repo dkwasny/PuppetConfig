@@ -1,5 +1,5 @@
 class java {
-	package { "java-1.7.0-openjdk":
+	package { "java-1.7.0-openjdk-devel":
 		ensure => present,
 		allow_virtual => false
 	} ->	
