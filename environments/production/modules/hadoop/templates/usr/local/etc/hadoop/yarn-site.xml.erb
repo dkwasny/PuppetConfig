@@ -38,7 +38,7 @@
 	</property>
 	<property>
 		<name>yarn.scheduler.maximum-allocation-mb</name>
-		<value>768</value>
+		<value>1024</value>
 	</property>
 	<property>
 		<name>yarn.scheduler.maximum-allocation-vcores</name>
@@ -56,7 +56,7 @@
 	</property>
 	<property>
 		<name>yarn.nodemanager.resource.memory-mb</name>
-		<value>768</value>
+		<value>1024</value>
 	</property>
 	<property>
 		<name>yarn.nodemanager.resource.cpu-vcores</name>
@@ -81,6 +81,22 @@
 	<property>
 		<name>yarn.nodemanager.local-dirs</name>
 		<value>/var/local/yarn/nm-local-dir</value>
+	</property>
+	
+	<!--
+		Turning off virtual memory checking due to
+		glibc doing overzealous vmem allocations.
+		I'm not a fan of doing this, but memory is
+		tight on the vmgrid.
+
+		Cloudera even recommends to turn this off.
+		http://blog.cloudera.com/blog/2014/04/apache-hadoop-yarn-avoiding-6-time-consuming-gotchas/
+
+		Also see HADOOP-7154 and MAPREDUCE-3068
+	-->
+	<property>
+		<name>yarn.nodemanager.vmem-check-enabled</name>
+		<value>false</value>
 	</property>
 
 	<!-- Log -->
