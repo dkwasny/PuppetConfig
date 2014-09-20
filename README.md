@@ -65,6 +65,7 @@ Here is a list of all installed daemons.
 * zookeeper
 * hbase-master
 * hbase-regionserver
+* solr
 
 .goeshere Files
 -----------
