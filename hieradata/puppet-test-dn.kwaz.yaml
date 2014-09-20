@@ -10,5 +10,6 @@ classes:
         - hadoop::datanode
         - zookeeper
         - hbase::regionserver
+        - solr
 
 zookeeper::myid: 2

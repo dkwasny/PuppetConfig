@@ -12,5 +12,6 @@ classes:
         - zookeeper
         - hbase::master
         - hbase::regionserver
+        - solr
 
 zookeeper::myid: 1
