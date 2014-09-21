@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Stopping mrhistoryserver <%= @namenode %>"
+ssh -t <%= @namenode %> "sudo systemctl stop yarn-mrhistoryserver";
+for i in <%= @datanodes * " " %>; do
+	echo "Stopping nodemanager $i";
+	ssh -t $i "sudo systemctl stop yarn-nodemanager";
+done;
+echo "Stopping resourcemanager <%= @namenode %>"
+ssh -t <%= @namenode %> "sudo systemctl stop yarn-resourcemanager";

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Starting resourcemanager <%= @namenode %>"
+ssh -t <%= @namenode %> "sudo systemctl start yarn-resourcemanager";
+for i in <%= @datanodes * " " %>; do
+	echo "Starting nodemanager $i";
+	ssh -t $i "sudo systemctl start yarn-nodemanager";
+done;
+echo "Starting mrhistoryserver <%= @namenode %>"
+ssh -t <%= @namenode %> "sudo systemctl start yarn-mrhistoryserver";

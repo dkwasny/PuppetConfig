@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in <%= @zookeeper_quorum * " " %>; do
+	echo "Stopping zookeeper $i";
+	ssh -t $i "sudo systemctl stop zookeeper";
+done;

@@ -1,1 +1,6 @@
-admin	ALL=(ALL)	ALL
+admin	ALL=(ALL)	PASSWD: ALL, NOPASSWD: \
+	/usr/bin/systemctl * hdfs-*, \
+	/usr/bin/systemctl * yarn-*, \
+	/usr/bin/systemctl * hbase-*, \
+	/usr/bin/systemctl * zookeeper, \
+	/usr/bin/systemctl * solr

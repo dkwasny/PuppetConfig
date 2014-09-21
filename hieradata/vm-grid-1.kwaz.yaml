@@ -8,11 +8,9 @@ classes:
         - epel_packages
         - admin_user
         - java
-        - hadoop::namenode
-        - hadoop::datanode
+        - hadoop
         - zookeeper
-        - hbase::master
-        - hbase::regionserver
+        - hbase
         - solr
 
 zookeeper::myid: 1

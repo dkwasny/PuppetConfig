@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Starting master <%= @master %>"
+ssh -t <%= @master %> "sudo systemctl start hbase-master";
+for i in <%= @regionservers * " " %>; do
+	echo "Starting regionserver $i";
+	ssh -t $i "sudo systemctl start hbase-regionserver";
+done;

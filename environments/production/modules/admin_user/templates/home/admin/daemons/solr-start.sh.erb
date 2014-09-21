@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in <%= @solr_nodes * " " %>; do
+	echo "Starting solr $i";
+	ssh -t $i "sudo systemctl start solr";
+done;

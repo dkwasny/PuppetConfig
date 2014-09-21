@@ -17,8 +17,5 @@ class solr {
 		source => "/tmp/solr-4.10.0-1.el7.centos.noarch.rpm",
 		allow_virtual => false,
 		require => Class["java"]
-	} ~>
-	service { "solr":
-		enable => true
 	}
 }

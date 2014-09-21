@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in <%= @regionservers * " " %>; do
+	echo "Stopping regionserver $i";
+	ssh -t $i "sudo systemctl stop hbase-regionserver";
+done;
+echo "Stopping master <%= @master %>"
+ssh -t <%= @master %> "sudo systemctl stop hbase-master";

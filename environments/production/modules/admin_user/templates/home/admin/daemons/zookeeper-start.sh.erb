@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in <%= @zookeeper_quorum * " " %>; do
+	echo "Starting zookeeper $i";
+	ssh -t $i "sudo systemctl start zookeeper";
+done;

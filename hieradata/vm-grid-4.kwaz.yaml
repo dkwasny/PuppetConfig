@@ -1,12 +1,16 @@
-# puppet-test.kwaz
+# vm-grid-4.kwaz
 ---
 classes:
         - firewalld
+        - journald
         - base_packages
-        - ntp_server
+        - ntp_client
         - epel_packages
         - admin_user
         - java
         - hadoop
+        - zookeeper
         - hbase
         - solr
+
+zookeeper::myid: 4

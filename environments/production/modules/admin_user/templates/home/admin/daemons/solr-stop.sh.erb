@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in <%= @solr_nodes * " " %>; do
+	echo "Stopping solr $i";
+	ssh -t $i "sudo systemctl stop solr";
+done;

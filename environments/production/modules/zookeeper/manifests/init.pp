@@ -41,9 +41,5 @@ class zookeeper ($quorum, $myid) {
 		group => "root",
 		mode => 644,
 		content => template("zookeeper/usr/local/etc/zookeeper/zoo.cfg.erb")
-	} ~>
-	service { "zookeeper":
-		enable => true,
-		subscribe => File["/var/local/zookeeper/myid"]
 	}
 }

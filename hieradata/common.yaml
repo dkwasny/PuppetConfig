@@ -1,18 +1,44 @@
 # default
 ---
-
+# This block is where you define the roles
+# each server will be taking on.
 namenode: &namenode "vm-grid-1"
 datanodes: &datanodes
         - "vm-grid-1"
         - "vm-grid-2"
+        - "vm-grid-3"
+        - "vm-grid-4"
 zookeper_quorum: &zookeeper_quorum
+        - "vm-grid-2"
+        - "vm-grid-3"
+        - "vm-grid-4"
+solr_nodes: &solr_nodes
         - "vm-grid-1"
         - "vm-grid-2"
+        - "vm-grid-3"
+        - "vm-grid-4"
+master: &master "vm-grid-1"
+regionservers: &regionservers
+        - "vm-grid-1"
+        - "vm-grid-2"
+        - "vm-grid-3"
+        - "vm-grid-4"
+ntp_server: &ntp_server "vm-grid-1"
 
-ntp_client::server_name: *namenode
-hadoop::base::namenode: *namenode
-hadoop::base::datanodes: *datanodes
+# This block assigns the roles above to
+# acutal puppet parameters for configuration.
+# You should not need to edit this when
+# changing server names.
+ntp_client::server_name: *ntp_server
+hadoop::namenode: *namenode
+hadoop::datanodes: *datanodes
 zookeeper::quorum: *zookeeper_quorum
-hbase::base::namenode: *namenode
-hbase::base::regionservers: *datanodes
-hbase::base::zookeeper_quorum: *zookeeper_quorum
+hbase::namenode: *namenode
+hbase::regionservers: *regionservers
+hbase::zookeeper_quorum: *zookeeper_quorum
+admin_user::namenode: *namenode
+admin_user::datanodes: *datanodes
+admin_user::zookeeper_quorum: *zookeeper_quorum
+admin_user::master: *master
+admin_user::regionservers: *datanodes
+admin_user::solr_nodes: *solr_nodes
