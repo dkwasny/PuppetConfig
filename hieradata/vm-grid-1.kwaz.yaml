@@ -4,13 +4,10 @@ classes:
         - firewalld
         - journald
         - base_packages
-        - ntp_server
+        - chrony_server
         - epel_packages
         - admin_user
         - java
         - hadoop
-        - zookeeper
         - hbase
         - solr
-
-zookeeper::myid: 1

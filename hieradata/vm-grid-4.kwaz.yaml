@@ -4,7 +4,7 @@ classes:
         - firewalld
         - journald
         - base_packages
-        - ntp_client
+        - chrony_client
         - epel_packages
         - admin_user
         - java

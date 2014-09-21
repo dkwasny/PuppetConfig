@@ -23,13 +23,14 @@ regionservers: &regionservers
         - "vm-grid-2"
         - "vm-grid-3"
         - "vm-grid-4"
-ntp_server: &ntp_server "vm-grid-1"
+time_server: &time_server "vm-grid-1"
 
 # This block assigns the roles above to
 # acutal puppet parameters for configuration.
 # You should not need to edit this when
 # changing server names.
-ntp_client::server_name: *ntp_server
+ntp_client::server_name: *time_server
+chrony_client::server_name: *time_server
 hadoop::namenode: *namenode
 hadoop::datanodes: *datanodes
 zookeeper::quorum: *zookeeper_quorum

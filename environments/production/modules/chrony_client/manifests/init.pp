@@ -1,21 +1,21 @@
-class ntp_server {
-	package { "ntp":
+class chrony_client ($server_name) {
+	package { "chrony":
 		ensure => present,
 		allow_virtual => false
 	} ->
-	package { "chrony":
+	package { "ntp":
 		ensure => purged,
 		allow_virtual => false
 	} ->
-	file { "/etc/ntp.conf":
+	file { "/etc/chrony.conf":
 		ensure => file,
 		owner => "root",
 		group => "root",
 		mode => 644,
-		source => "puppet:///modules/ntp_server/etc/ntp.conf",
+		content => template("chrony_client/etc/chrony.conf.erb")
 	} ~>
-	service { "ntpd":
+	service { "chronyd":
 		ensure => running,
 		enable => true
 	}
-}
+} 

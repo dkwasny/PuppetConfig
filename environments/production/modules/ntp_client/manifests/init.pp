@@ -3,6 +3,10 @@ class ntp_client ($server_name) {
 		ensure => present,
 		allow_virtual => false
 	} ->
+	package { "chrony":
+		ensure => purged,
+		allow_virtual => false
+	} ->
 	file { "/etc/ntp.conf":
 		ensure => file,
 		owner => "root",
