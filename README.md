@@ -68,6 +68,7 @@ Administration Scripts
 In the home of the admin user on every node you will find a **daemons** and **stacks** folder.
 These folders will contain startup and shutdown scripts for their respective domains.
 The scripts will stop daemons in the opposite order they are started to help prevent issues.
+You should ideally be able to run these scripts from any node within the grid, though you will get less "known_hosts" issues if you stick to one node.
 
 The **daemons** scripts are meant to only turn on a small set of daemons for minimmal functionality.
 Turning on a single daemon may result in failure (i.e. starting hbase before hdfs).
