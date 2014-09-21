@@ -67,10 +67,12 @@ Administration Scripts
 ----------
 In the home of the admin user on every node you will find a **daemons** and **stacks** folder.
 These folders will contain startup and shutdown scripts for their respective domains.
+The scripts will stop daemons in the opposite order they are started to help prevent issues.
 
 The **daemons** scripts are meant to only turn on a small set of daemons for minimmal functionality.
-The **stacks** scripts are meant to turn on a logical grouping of **daemons** scripts that enable a funcitonal grid.
+Turning on a single daemon may result in failure (i.e. starting hbase before hdfs).
 
+The **stacks** scripts are meant to turn on a logical grouping of **daemons** scripts that enable a funcitonal grid.
 Here is a list of the stacks I have setup so far.
 * Stacks
   * hadoop
