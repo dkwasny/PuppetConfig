@@ -18,30 +18,30 @@ I rely on the init system to start all the appropriate daemons for me and puppet
 How to Use
 ------------
 1. Setup a server named **puppet** that will become your puppet master.
- * If you name the server something other than **puppet** then you will need to configre your puppet agents to look for that server.
+  * If you name the server something other than **puppet** then you will need to configre your puppet agents to look for that server.
 1. Install the **puppet-server** package from the appropriate [Puppet repo](https://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html) to your puppet master.
 1. Setup your puppet master and point it to a clone of this repo for configuration.
- * I just add a symlink from **/etc/puppet** to wherever I checked out the repo (in my home directory).
+  * I just add a symlink from **/etc/puppet** to wherever I checked out the repo (in my home directory).
 1. Start the **puppetmaster** daemon.
 1. Add any .rpm files to the repo where a .goeshere marker file already exists.
- * See below for more information.
+  * See below for more information.
 1. Setup however many servers you want that will become your puppet agents.
 1. Copy and run **setup_agent.sh** on your puppet agents.
- * This should perform a full yum update and install the **puppet** repo and package.
+  * This should perform a full yum update and install the **puppet** repo and package.
 1. Create YAML files for your puppet agents in [hieradata](https://github.com/dkwasny/PuppetConfig/tree/master/hieradata).
- * There should be useful example files already in there.
- * The filename is typically **\<FQDN\>.yaml**.
- * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
+  * There should be useful example files already in there.
+  * The filename is typically **\<FQDN\>.yaml**.
+  * Per [hiera.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hiera.yaml), I am REALLY using the "Puppet Client Cert Name", but so far that has always been the FQDN.
 1. Update [common.yaml](https://github.com/dkwasny/PuppetConfig/blob/master/hieradata/common.yaml) to match your puppet agents.
 1. Run **sudo puppet agent --no-daemonize --verbose --noop** on your puppet agents to trigger your cert requests.
- * You may need to adjust your firewall settings to allow the traffic through.
- * Like the settings within this repo, I just open all 192.168.1.0/24 traffic to the puppet master.
+  * You may need to adjust your firewall settings to allow the traffic through.
+  * Like the settings within this repo, I just open all 192.168.1.0/24 traffic to the puppet master.
 1. Verify the cert requests made it to your puppet master by running **sudo puppet cert list --all** on your puppet master.
 1. Accept each cert request by running **sudo puppet cert sign \<SERVER_NAME\>**.
- * You can use **--all** instead of **\<SERVER_NAME\>** if you want.
+  * You can use **--all** instead of **\<SERVER_NAME\>** if you want.
 1. Again, run **sudo puppet agent --no-daemonize --verbose --noop** on your puppet agents and see the list of changes that will be applied.
 1. Once you are satisfied with the **--noop** output, run **sudo puppet agent --no-daemonize --verbose** to start the real deal.
- * This takes about ~240 seconds for me.
+  * This takes about ~240 seconds for me.
 1. SSH over to **admin@\<NAMENODE\>** (password is *password*) and run **hdfs-format.sh** to setup your new namenode.
 1. Start up either a daemon or a stack of daemons and have fun!
 
@@ -57,7 +57,7 @@ Here is a list of all installed daemons.
 * yarn-resourcemanager
 * yarn-nodemanager
 * yarn-mrhistoryserver
- * This is really for MapReduce, but I'm rolling it up with the other yarn daemons.
+  * This is really for MapReduce, but I'm rolling it up with the other yarn daemons.
 * zookeeper
 * hbase-master
 * hbase-regionserver
@@ -75,14 +75,10 @@ Turning on a single daemon may result in failure (i.e. starting hbase before hdf
 The **stacks** scripts are meant to turn on a logical grouping of **daemons** scripts that enable a funcitonal grid.
 Here is a list of the stacks I have setup so far.
 * Stacks
-  * hadoop
-    * Starts all hdfs and yarn daemons
-  * hbase
-    * Starts all hdfs, yarn, zookeeper and hbase daemons.
-  * solrcloud
-    * Starts all hdfs, yarn, zookeeper and solr daemons.
-  * all
-    * Starts all the things!
+  * hadoop: Starts all hdfs and yarn daemons
+  * hbase: Starts all hdfs, yarn, zookeeper and hbase daemons.
+  * solrcloud: Starts all hdfs, yarn, zookeeper and solr daemons.
+  * all: Starts all the things!
 
 .goeshere Files
 -----------
