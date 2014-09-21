@@ -13,4 +13,4 @@ classes:
         - hbase
         - solr
 
-zookeeper::myid: 2
+zookeeper::myid: 1
