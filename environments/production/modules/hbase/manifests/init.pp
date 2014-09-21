@@ -39,12 +39,7 @@ class hbase ($namenode, $regionservers, $zookeeper_quorum) {
 		mode => 644,
 		content => template("hbase/usr/local/etc/hbase/regionservers.erb")
 	} ->
-	file { [
-		"/var/local/hbase",
-		"/var/local/hbase/local",
-		"/var/local/hbase/tmp",
-		"/var/log/hbase"
-		]:
+	file { "/var/log/hbase":
 		ensure => directory,
 		owner => "hbase",
 		group => "hbase",

@@ -22,10 +22,6 @@
 -->
 <configuration>
 	<property>
-		<name>hbase.tmp.dir</name>
-		<value>/var/local/hbase/tmp</value>
-	</property>
-	<property>
 		<name>hbase.rootdir</name>
 		<value>hdfs://<%= @namenode %>:8020/hbase</value>
 	</property>
@@ -36,10 +32,6 @@
 	<property>
 		<name>hbase.zookeeper.quorum</name>
 		<value><%= @zookeeper_quorum * "," %></value>
-	</property>
-	<property>
-		<name>hbase.local.dir</name>
-		<value>/var/local/hbase/local</value>
 	</property>
 	<property>
 		<name>hbase.regionserver.handler.count</name>
