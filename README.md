@@ -74,11 +74,10 @@ Turning on a single daemon may result in failure (i.e. starting hbase before hdf
 
 The **stacks** scripts are meant to turn on a logical grouping of **daemons** scripts that enable a funcitonal grid.
 Here is a list of the stacks I have setup so far.
-* Stacks
-  * hadoop: Starts all hdfs and yarn daemons
-  * hbase: Starts all hdfs, yarn, zookeeper and hbase daemons.
-  * solrcloud: Starts all hdfs, yarn, zookeeper and solr daemons.
-  * all: Starts all the things!
+* hadoop: Starts all hdfs and yarn daemons
+* hbase: Starts all hdfs, yarn, zookeeper and hbase daemons
+* solrcloud: Starts all hdfs, yarn, zookeeper and solr daemons.
+* all: Starts all the things!
 
 .goeshere Files
 -----------
