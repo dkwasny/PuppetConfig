@@ -4,5 +4,7 @@ for i in <%= @datanodes * " " %>; do
 	echo "Stopping datanode $i";
 	ssh -t $i "sudo systemctl stop hdfs-datanode";
 done;
+echo "Stopping secondarynamenode <%= @namenode %>"
+ssh -t <%= @namenode %> "sudo systemctl stop hdfs-secondarynamenode";
 echo "Stopping namenode <%= @namenode %>"
 ssh -t <%= @namenode %> "sudo systemctl stop hdfs-namenode";

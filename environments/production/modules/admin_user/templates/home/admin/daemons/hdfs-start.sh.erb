@@ -2,6 +2,8 @@
 
 echo "Starting namenode <%= @namenode %>"
 ssh -t <%= @namenode %> "sudo systemctl start hdfs-namenode";
+echo "Starting secondarynamenode <%= @namenode %>"
+ssh -t <%= @namenode %> "sudo systemctl start hdfs-secondarynamenode";
 for i in <%= @datanodes * " " %>; do
 	echo "Starting datanode $i";
 	ssh -t $i "sudo systemctl start hdfs-datanode";
