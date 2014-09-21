@@ -42,12 +42,8 @@ How to Use
 1. Again, run **sudo puppet agent --no-daemonize --verbose --noop** on your puppet agents and see the list of changes that will be applied.
 1. Once you are satisfied with the **--noop** output, run **sudo puppet agent --no-daemonize --verbose** to start the real deal.
  * This takes about ~240 seconds for me.
-1. SSH over to **admin@\<NAMENODE\>** (password is *password*) and run **grid-format.sh** to setup your new namenode.
- * If you skip this step, all hell will break loose when you try to start your grid.
- * I can't really think of a good way to automate this because it will nuke all existing HDFS data.
-1. Either start up all of the appropriate daemons yourself, or just restart the machines.
- * The daemons should be run on machine startup.
- * See below for more information on the daemons.
+1. SSH over to **admin@\<NAMENODE\>** (password is *password*) and run **hdfs-format.sh** to setup your new namenode.
+1. Start up either a daemon or a stack of daemons and have fun!
 
 Daemons
 -----------
@@ -66,6 +62,25 @@ Here is a list of all installed daemons.
 * hbase-master
 * hbase-regionserver
 * solr
+
+Administration Scripts
+----------
+In the home of the admin user on every node you will find a **daemons** and **stacks** folder.
+These folders will contain startup and shutdown scripts for their respective domains.
+
+The **daemons** scripts are meant to only turn on a small set of daemons for minimmal functionality.
+The **stacks** scripts are meant to turn on a logical grouping of **daemons** scripts that enable a funcitonal grid.
+
+Here is a list of the stacks I have setup so far.
+* Stacks
+  * hadoop
+    * Starts all hdfs and yarn daemons
+  * hbase
+    * Starts all hdfs, yarn, zookeeper and hbase daemons.
+  * solrcloud
+    * Starts all hdfs, yarn, zookeeper and solr daemons.
+  * all
+    * Starts all the things!
 
 .goeshere Files
 -----------
