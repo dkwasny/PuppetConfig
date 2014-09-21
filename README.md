@@ -73,6 +73,7 @@ The **daemons** scripts are meant to only turn on a small set of daemons for min
 Turning on a single daemon may result in failure (i.e. starting hbase before hdfs).
 
 The **stacks** scripts are meant to turn on a logical grouping of **daemons** scripts that enable a funcitonal grid.
+
 Here is a list of the stacks I have setup so far.
 * hadoop: Starts all hdfs and yarn daemons
 * hbase: Starts all hdfs, yarn, zookeeper and hbase daemons
