@@ -1,3 +1,8 @@
+This project is deprecated!
+===========================
+While this is still very usable, I will be making changes to [AnsibleConfig](https://github.com/dkwasny/AnsibleConfig) from now on.
+Let's see how far this deprecation chain will go...
+
 PuppetConfig
 ============
 
